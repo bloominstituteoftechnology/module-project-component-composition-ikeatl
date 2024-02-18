@@ -18,12 +18,11 @@ align-items: center;
 function App() {
   const [photoData, setPhotoData] = useState(null);
   const [date, setDate] = useState('');
-  const MY_API_KEY = 'GheJXy0fwCI6VKUQusGKbHId6VOD1mAKptBdLcm0'
+
 
   useEffect(() => {
-    axios.get(`https://api.nasa.gov/planetary/apod?api_key=${MY_API_KEY}&date=${date}`)
+    axios.get(`https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&date=${date}`)
       .then(res => {
-        console.log(res.data)
         setPhotoData(res.data);
       }).catch(err => console.error(err))
   }, [date]);
@@ -31,7 +30,6 @@ function App() {
   if (!photoData) return <h3>Loading...</h3>;
 
   const handleSelect = (date) => {
-    console.log("date:", date);
     setDate(date)
   }
 
